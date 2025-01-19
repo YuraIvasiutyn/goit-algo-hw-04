@@ -25,14 +25,6 @@ def change_contact(args, contacts):
         return f"Not found name is {name} if you add new contact, please enter a command add username phone"
 
 
-def get_all_contacts(contacts):
-    if contacts:
-        for key, value in contacts.items():
-            print(f"Name {key.capitalize()}, phone number {value}")
-    else:
-        print("Not data. if you add new contact, please enter a command add username phone")
-
-
 def delete_contact(name, contacts):
     try:
         del contacts[name[0]]
@@ -65,7 +57,8 @@ def main():
         elif command == "change":
             print(change_contact(args, contacts))
         elif command == "all":
-            get_all_contacts(contacts)
+            for key, value in contacts.items():
+                print(f"Name {key.capitalize()}, phone number {value}")
         elif command == "delete":
             print(delete_contact(args, contacts))
         elif command == "phone":
