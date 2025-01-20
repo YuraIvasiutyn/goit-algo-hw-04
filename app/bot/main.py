@@ -40,6 +40,15 @@ def get_phone_number(args, contacts):
         return "Invalid data format. Type 'Phone username'."
 
 
+def show_all_contacts(contacts):
+    if not contacts:
+        return "No contacts found."
+    result = []
+    for key, value in contacts.items():
+        result.append(f"Name {key.capitalize()}, phone number {value}")
+    return "\n".join(result)
+
+
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
@@ -57,8 +66,7 @@ def main():
         elif command == "change":
             print(change_contact(args, contacts))
         elif command == "all":
-            for key, value in contacts.items():
-                print(f"Name {key.capitalize()}, phone number {value}")
+            print(show_all_contacts(contacts))
         elif command == "delete":
             print(delete_contact(args, contacts))
         elif command == "phone":
